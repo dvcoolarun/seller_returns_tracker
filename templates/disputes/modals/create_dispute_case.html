@@ -1,0 +1,26 @@
+
+<div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title">Create Dispute Case</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+    </div>
+    <div class="modal-body">
+        {% load crispy_forms_tags %}
+        <form
+            hx-post="{% url 'create_dispute_case_modal' %}"
+            hx-target="#dispute-list-body"
+            hx-swap="innerHTML"
+        >
+            {% if form.non_field_errors %}
+                <ul class="errorlist">
+                    {% for error in form.non_field_errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            {{ form|crispy }}
+            <button type="submit" class="btn btn-primary">Create Dispute</button>
+        </form>
+    </div>
+</div>

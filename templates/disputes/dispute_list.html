@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h2>Dispute cases</h2>
+
+        <!-- Modal Trigger -->
+        <button
+            hx-get="{% url 'create_dispute_case_modal' %}"
+            hx-target="#disputeModal"
+            hx-trigger="click"
+            data-bs-toggle="modal"
+            data-bs-target="#disputeModal"
+            class="btn btn-primary mb-3"
+        >
+            Create Dispute Case
+        </button>
+
+        <!-- Dispute List -->
+        <table class="table" id="dispute-list">
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Dispute Reason</th>
+                    <th>Status</th>
+                    <th>Created At</th>
+                </tr>
+            </thead>
+            <tbody id="dispute-list-body">
+                {% include 'disputes/partials/dispute_list_body.html' %}
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+
+
+<!-- Modal -->
+
+<!-- Modal for Dispute Creation -->
+<div class="modal fade" id="disputeModal" tabindex="-1" aria-hidden="true">   
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" id="disputeModalContent">
+            <!-- Modal content loaded via HTMX -->
+        </div>
+    </div>
+</div>
+
+{% endblock %}
