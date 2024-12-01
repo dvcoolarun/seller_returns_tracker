@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if returns %}
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Return</h2>
+            <a href="{% url 'return_create' %}" class="btn btn-primary mb-3">Create Return</a>
+
+            <table class="table" id="order-list">
+                <thead>
+                    <tr>
+                        <th>Return ID</th>
+                        <th>Order ID</th>
+                        <th>Reason</th>
+                        <th>Status</th>
+                        <th>Created At</th>
+                    </tr>
+                </thead>
+                <tbody id="return-list-body">
+                    {% for return in returns %}
+                        <tr>
+                            <td>{{ return.id }}</td>
+                            <td>{{ return.order_id }}</td>
+                            <td>{{ return.reason }}</td>
+                            <td>{{ return.status }}</td>
+                            <td>{{ return.created_at }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% else %}
+    <div class="alert alert-info">
+        No returns found.
+    </div>
+{% endif %}
+
+{% endblock %}  

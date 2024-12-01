@@ -3,9 +3,11 @@
 {% block content %}
 <div class="row">
     <div class="col-md-12">
-        <h2>Create Order</h2>
+        <h2>Create New Return</h2>
 
+        {% load crispy_forms_tags %}
         <form method="post">
+            {% csrf_token %}
             {% if form.non_field_errors %}
                 <ul class="errorlist">
                     {% for error in form.non_field_errors %}
@@ -13,7 +15,11 @@
                     {% endfor %}
                 </ul>
             {% endif %}
+
             {{ form|crispy }}
-            <button type="submit" class="btn btn-primary">Create Order</button>
+
+            <button type="submit" class="btn btn-primary">Create Return</button>
         </form>
     </div>
+</div>
+{% endblock %}

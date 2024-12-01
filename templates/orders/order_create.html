@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h2>Create New Order</h2>
+
+        {% load crispy_forms_tags %}
+        <form method="post">
+            {% csrf_token %}
+            {% if form.non_field_errors %}
+                <ul class="errorlist">
+                    {% for error in form.non_field_errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            {{ form|crispy }}
+
+            <button type="submit" class="btn btn-primary">Create Order</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
