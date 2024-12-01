@@ -1,7 +1,8 @@
 # Amazon Seller Returns ( Using Django With HTMX )
 
-# Architecture
+## Architecture
 
+```
 amazon-seller-returns/
 │
 ├── app/
@@ -15,11 +16,11 @@ amazon-seller-returns/
 │   │   ├── views.py       # Dispute management views
 │   │   └── forms.py       # Dispute case forms
 │   │
-│   │── returns/
+│   ├── returns/
 │   │   ├── models.py      # Return Case model
 │   │   ├── views.py       # Return management views
 │   │   └── forms.py       # Return case forms
-    │   
+│   │   
 │   └── core/
 │       ├── settings.py    # Django settings
 │       └── urls.py        # Main URL routing
@@ -33,9 +34,9 @@ amazon-seller-returns/
 ├── Dockerfile
 ├── docker-compose.yml
 └── requirements.txt
+```
 
-<img src="./Demo.gif" alt="Recording of the app in action" witdh=400 heiht=400 />
-
+![Recording of the app in action](./Demo.gif)
 
 ## Getting Started
 
@@ -44,11 +45,9 @@ Setup using the Dockerfile and docker-compose.yml
 - Install Docker and Docker Compose on your machine.
 - Clone this repository to your local machine.
 - Navigate to the project directory.
-
-- Run the following command to build and start the Docker containers:
-    docker-compose up -d --build
-    docker-compose exec web python manage.py migrate
-
-
+- Run the following commands to build and start the Docker containers:
+  ```bash
+  docker-compose up -d --build
+  docker-compose exec web python manage.py migrate
+  ```
 - Access the application in your web browser at http://localhost:8000
-
